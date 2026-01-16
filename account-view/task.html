@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eDOC - 任务中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/account-view.css">
+</head>
+<body class="account-body">
+    <div class="bg-gradient"></div>
+
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span class="time">09:43</span>
+                <div class="status-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+
+            <div class="page-content task-page">
+                <!-- 顶部导航 -->
+                <div class="page-header">
+                    <h1>任务中心</h1>
+                </div>
+
+                <!-- Tab切换 -->
+                <div class="tab-bar task-tab">
+                    <button class="tab-item active" data-tab="pending">
+                        待处理
+                        <span class="tab-badge">2</span>
+                    </button>
+                    <button class="tab-item" data-tab="progress">进行中</button>
+                    <button class="tab-item" data-tab="completed">已完成</button>
+                </div>
+
+                <!-- 待处理Tab -->
+                <div class="tab-content active" id="tab-pending">
+                    <div class="task-date-group">
+                        <div class="date-label">今天</div>
+
+                        <div class="task-card urgent" onclick="showTaskDetail('metadata')">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon metadata">
+                                        <i class="fas fa-magic"></i>
+                                    </div>
+                                    <span>元数据提取任务</span>
+                                </div>
+                                <div class="task-priority urgent">紧急</div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">3个文档待确认元数据提取结果</p>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 发起时间：10:30</span>
+                                    <span><i class="fas fa-file"></i> 3个文档</span>
+                                </div>
+                            </div>
+                            <div class="task-footer">
+                                <button class="task-btn secondary" onclick="event.stopPropagation();">查看详情</button>
+                                <button class="task-btn primary" onclick="event.stopPropagation(); processTask('metadata');">立即处理</button>
+                            </div>
+                        </div>
+
+                        <div class="task-card warning" onclick="showTaskDetail('approve')">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon approve">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <span>分享审批</span>
+                                </div>
+                                <div class="task-priority warning">一般</div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">张三 申请分享5个文档给XX化工</p>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 发起时间：09:15</span>
+                                    <span><i class="fas fa-file"></i> 5个文档</span>
+                                </div>
+                            </div>
+                            <div class="task-footer">
+                                <button class="task-btn danger" onclick="event.stopPropagation(); rejectTask('approve');">拒绝</button>
+                                <button class="task-btn primary" onclick="event.stopPropagation(); approveTask('approve');">通过</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 进行中Tab -->
+                <div class="tab-content" id="tab-progress">
+                    <div class="task-date-group">
+                        <div class="date-label">进行中任务</div>
+
+                        <div class="task-card progress">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon sync">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <span>文档同步任务</span>
+                                </div>
+                                <div class="task-status running">
+                                    <span class="pulse"></span> 运行中
+                                </div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">正在从DRM系统同步文档...</p>
+                                <div class="sync-progress">
+                                    <div class="sync-progress-bar">
+                                        <div class="sync-progress-fill" style="width: 65%;"></div>
+                                    </div>
+                                    <span class="sync-percent">65%</span>
+                                </div>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 开始时间：10:25</span>
+                                    <span><i class="fas fa-file"></i> 已同步 8/12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 已完成Tab -->
+                <div class="tab-content" id="tab-completed">
+                    <div class="task-date-group">
+                        <div class="date-label">昨天</div>
+
+                        <div class="task-card completed">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon sync">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <span>文档同步任务</span>
+                                </div>
+                                <div class="task-status success">
+                                    <i class="fas fa-check-circle"></i> 已完成
+                                </div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">DRM系统同步完成，新增12个文档</p>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 完成时间：昨天 18:30</span>
+                                </div>
+                            </div>
+                            <div class="task-footer">
+                                <button class="task-btn secondary">查看详情</button>
+                            </div>
+                        </div>
+
+                        <div class="task-card completed">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon metadata">
+                                        <i class="fas fa-magic"></i>
+                                    </div>
+                                    <span>元数据提取任务</span>
+                                </div>
+                                <div class="task-status success">
+                                    <i class="fas fa-check-circle"></i> 已完成
+                                </div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">5个文档元数据已确认</p>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 完成时间：昨天 16:45</span>
+                                </div>
+                            </div>
+                            <div class="task-footer">
+                                <button class="task-btn secondary">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-date-group">
+                        <div class="date-label">前天</div>
+
+                        <div class="task-card completed">
+                            <div class="task-header">
+                                <div class="task-type">
+                                    <div class="task-type-icon approve">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <span>分享审批</span>
+                                </div>
+                                <div class="task-status success">
+                                    <i class="fas fa-check-circle"></i> 已通过
+                                </div>
+                            </div>
+                            <div class="task-body">
+                                <p class="task-desc">李四 分享申请已批准</p>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-clock"></i> 完成时间：前天 14:20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部占位 -->
+                <div class="bottom-placeholder"></div>
+            </div>
+
+            <!-- 底部导航 -->
+            <div class="bottom-nav">
+                <a href="home.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="library.html" class="nav-item">
+                    <i class="fas fa-folder"></i>
+                    <span>文档库</span>
+                </a>
+                <a href="task.html" class="nav-item active">
+                    <i class="fas fa-tasks"></i>
+                    <span>任务</span>
+                    <span class="nav-badge">2</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+    </div>
+
+    <!-- 元数据提取详情弹窗 -->
+    <div class="modal-overlay" id="metadataModal">
+        <div class="modal-content metadata-modal">
+            <div class="modal-header">
+                <h3>元数据提取任务</h3>
+                <button class="modal-close" onclick="closeMetadataModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="task-info-bar">
+                    <span class="task-status-tag pending">待确认</span>
+                    <span class="task-time">发起时间：2026-01-16 10:30</span>
+                </div>
+
+                <div class="extraction-list">
+                    <div class="extraction-item">
+                        <div class="extraction-header">
+                            <div class="extraction-file">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>COA_新批次.pdf</span>
+                            </div>
+                            <div class="confidence">
+                                <span class="confidence-label">置信度</span>
+                                <span class="confidence-value high">92%</span>
+                            </div>
+                        </div>
+                        <div class="extraction-body">
+                            <div class="extraction-row">
+                                <span class="field-label">订单号</span>
+                                <input type="text" class="field-value" value="ORD20260115">
+                            </div>
+                            <div class="extraction-row">
+                                <span class="field-label">产品代码</span>
+                                <input type="text" class="field-value" value="PROD001">
+                            </div>
+                            <div class="extraction-row">
+                                <span class="field-label">批次号</span>
+                                <input type="text" class="field-value" value="BATCH003">
+                            </div>
+                            <div class="extraction-row">
+                                <span class="field-label">生产日期</span>
+                                <input type="text" class="field-value" value="2026-01-10">
+                            </div>
+                        </div>
+                        <div class="extraction-footer">
+                            <button class="btn-outline small">编辑</button>
+                            <button class="btn-primary small">确认</button>
+                        </div>
+                    </div>
+
+                    <div class="extraction-item">
+                        <div class="extraction-header">
+                            <div class="extraction-file">
+                                <i class="fas fa-file-image"></i>
+                                <span>签收单_扫描件.jpg</span>
+                            </div>
+                            <div class="confidence">
+                                <span class="confidence-label">置信度</span>
+                                <span class="confidence-value medium">87%</span>
+                            </div>
+                        </div>
+                        <div class="extraction-body">
+                            <div class="extraction-row">
+                                <span class="field-label">订单号</span>
+                                <input type="text" class="field-value" value="ORD20260115">
+                            </div>
+                            <div class="extraction-row">
+                                <span class="field-label">签收人</span>
+                                <input type="text" class="field-value" value="李明">
+                            </div>
+                            <div class="extraction-row">
+                                <span class="field-label">签收日期</span>
+                                <input type="text" class="field-value" value="2026-01-15">
+                            </div>
+                        </div>
+                        <div class="extraction-footer">
+                            <button class="btn-outline small">编辑</button>
+                            <button class="btn-primary small">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="rejectAllExtraction()">全部驳回</button>
+                <button class="btn-primary" onclick="confirmAllExtraction()">全部确认</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 审批确认弹窗 -->
+    <div class="modal-overlay" id="approveModal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-icon success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>确认通过审批？</h3>
+            <p>通过后，申请人将可以分享这些文档</p>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeApproveModal()">取消</button>
+                <button class="btn-primary" onclick="confirmApprove()">确认通过</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 拒绝确认弹窗 -->
+    <div class="modal-overlay" id="rejectModal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-icon danger">
+                <i class="fas fa-times"></i>
+            </div>
+            <h3>确认拒绝审批？</h3>
+            <div class="form-group">
+                <label>拒绝原因（可选）</label>
+                <textarea placeholder="请输入拒绝原因..." rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeRejectModal()">取消</button>
+                <button class="btn-danger" onclick="confirmReject()">确认拒绝</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">操作成功</span>
+    </div>
+
+    <script src="../js/account-view.js"></script>
+    <script>
+        // Tab切换
+        document.querySelectorAll('.task-tab .tab-item').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.task-tab .tab-item').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById('tab-' + tabId).classList.add('active');
+            });
+        });
+
+        function showTaskDetail(type) {
+            if (type === 'metadata') {
+                document.getElementById('metadataModal').classList.add('show');
+            }
+        }
+
+        function closeMetadataModal() {
+            document.getElementById('metadataModal').classList.remove('show');
+        }
+
+        function processTask(type) {
+            showTaskDetail(type);
+        }
+
+        function approveTask(type) {
+            document.getElementById('approveModal').classList.add('show');
+        }
+
+        function closeApproveModal() {
+            document.getElementById('approveModal').classList.remove('show');
+        }
+
+        function confirmApprove() {
+            closeApproveModal();
+            showToast('审批已通过');
+        }
+
+        function rejectTask(type) {
+            document.getElementById('rejectModal').classList.add('show');
+        }
+
+        function closeRejectModal() {
+            document.getElementById('rejectModal').classList.remove('show');
+        }
+
+        function confirmReject() {
+            closeRejectModal();
+            showToast('已拒绝该申请');
+        }
+
+        function confirmAllExtraction() {
+            closeMetadataModal();
+            showToast('元数据已全部确认');
+        }
+
+        function rejectAllExtraction() {
+            closeMetadataModal();
+            showToast('已全部驳回');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eDOC - 文档列表</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/share-view.css">
+</head>
+<body class="share-body">
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span class="time">09:42</span>
+                <div class="status-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+
+            <div class="page-content doc-list-page">
+                <!-- 顶部导航 -->
+                <div class="nav-header glass-effect">
+                    <a href="verify.html" class="nav-back">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <span class="nav-title">文档列表</span>
+                    <button class="nav-more" id="moreBtn">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+
+                <!-- 分享标题区 -->
+                <div class="share-header">
+                    <div class="share-title-info">
+                        <h2>订单 ORD20260112 相关文档</h2>
+                        <p><span class="doc-count">8</span> 个文档 · 来自 <span class="system-count">3</span> 个系统</p>
+                    </div>
+                    <div class="share-expire">
+                        <i class="fas fa-clock"></i>
+                        <span>7天后过期</span>
+                    </div>
+                </div>
+
+                <!-- 搜索框 -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜索文档名称/关键词..." id="searchInput">
+                    <button class="search-clear" id="clearSearch" style="display: none;">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+
+                <!-- 文档列表 -->
+                <div class="doc-list-container">
+                    <!-- DRM系统分组 -->
+                    <div class="doc-group" data-group="drm">
+                        <div class="group-header" onclick="toggleGroup('drm')">
+                            <div class="group-title">
+                                <div class="group-icon drm">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <span>DRM系统</span>
+                                <span class="group-count">3</span>
+                            </div>
+                            <i class="fas fa-chevron-down group-arrow"></i>
+                        </div>
+                        <div class="group-content expanded">
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="order">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc1">
+                                    <label for="doc1"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>经销商订单_ORD20260112</h4>
+                                    <p>
+                                        <span class="doc-tag link">网页链接</span>
+                                        <span class="doc-date">2026-01-08</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="receipt">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc2">
+                                    <label for="doc2"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>签收单_ORD20260112.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">1.2MB</span>
+                                        <span class="doc-date">2026-01-10</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="invoice">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc3">
+                                    <label for="doc3"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>发票_INV20260112.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">0.8MB</span>
+                                        <span class="doc-date">2026-01-12</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ECOA系统分组 -->
+                    <div class="doc-group" data-group="ecoa">
+                        <div class="group-header" onclick="toggleGroup('ecoa')">
+                            <div class="group-title">
+                                <div class="group-icon ecoa">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <span>ECOA系统</span>
+                                <span class="group-count">2</span>
+                            </div>
+                            <i class="fas fa-chevron-down group-arrow"></i>
+                        </div>
+                        <div class="group-content expanded">
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="coa">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc4">
+                                    <label for="doc4"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>COA证书_BATCH001.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">0.5MB</span>
+                                        <span class="doc-date">2026-01-11</span>
+                                    </p>
+                                </div>
+                                <div class="doc-badge hot">热门</div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="coc">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc5">
+                                    <label for="doc5"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>COC质检详单_BATCH001.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">1.8MB</span>
+                                        <span class="doc-date">2026-01-11</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-Approval系统分组 -->
+                    <div class="doc-group" data-group="ea">
+                        <div class="group-header collapsed" onclick="toggleGroup('ea')">
+                            <div class="group-title">
+                                <div class="group-icon ea">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <span>E-Approval系统</span>
+                                <span class="group-count">3</span>
+                            </div>
+                            <i class="fas fa-chevron-down group-arrow"></i>
+                        </div>
+                        <div class="group-content">
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="quote">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc6">
+                                    <label for="doc6"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>报价单附件_ORD20260112.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">2.5MB</span>
+                                        <span class="doc-date">2026-01-05</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="dt">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc7">
+                                    <label for="doc7"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>DT单_DT20260112.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">0.6MB</span>
+                                        <span class="doc-date">2026-01-09</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div class="doc-item" onclick="previewDoc(this)" data-doc="split">
+                                <div class="doc-checkbox">
+                                    <input type="checkbox" id="doc8">
+                                    <label for="doc8"></label>
+                                </div>
+                                <div class="doc-icon pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h4>分托单_SP20260112.pdf</h4>
+                                    <p>
+                                        <span class="doc-size">0.4MB</span>
+                                        <span class="doc-date">2026-01-10</span>
+                                    </p>
+                                </div>
+                                <div class="doc-actions">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部操作栏 -->
+                <div class="bottom-action-bar">
+                    <div class="select-all">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll"></label>
+                        <span class="selected-count">已选 <span id="selectedNum">0</span> 个</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn download" onclick="downloadSelected()">
+                            <i class="fas fa-download"></i>
+                            <span>下载</span>
+                        </button>
+                        <button class="action-btn share" onclick="shareSelected()">
+                            <i class="fas fa-share-alt"></i>
+                            <span>分享</span>
+                        </button>
+                        <button class="action-btn favorite" onclick="favoriteSelected()">
+                            <i class="far fa-star"></i>
+                            <span>收藏</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+    </div>
+
+    <!-- 更多操作菜单 -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <div class="dropdown-item">
+            <i class="fas fa-download"></i>
+            <span>全部下载</span>
+        </div>
+        <div class="dropdown-item">
+            <i class="fas fa-info-circle"></i>
+            <span>分享详情</span>
+        </div>
+        <div class="dropdown-item">
+            <i class="fas fa-flag"></i>
+            <span>举报问题</span>
+        </div>
+    </div>
+
+    <!-- 登录引导弹窗 -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content login-modal">
+            <button class="modal-close" onclick="closeLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="login-modal-icon">
+                <i class="far fa-star"></i>
+            </div>
+            <h3>收藏文档</h3>
+            <p>登录后即可收藏文档<br>方便下次快速查找</p>
+            <button class="btn-primary" onclick="goToLogin()">
+                <i class="fas fa-sign-in-alt"></i>
+                立即登录
+            </button>
+            <button class="btn-secondary" onclick="goToRegister()">
+                <i class="fas fa-user-plus"></i>
+                注册新账号
+            </button>
+            <a href="javascript:void(0)" class="skip-link" onclick="closeLoginModal()">暂不登录</a>
+        </div>
+    </div>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>操作成功</span>
+    </div>
+
+    <script src="../js/share-view.js"></script>
+    <script>
+        // 页面特定脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            initDocList();
+        });
+    </script>
+</body>
+</html>

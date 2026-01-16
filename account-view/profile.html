@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eDOC - 个人中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/account-view.css">
+</head>
+<body class="account-body">
+    <div class="bg-gradient"></div>
+
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span class="time">09:44</span>
+                <div class="status-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+
+            <div class="page-content profile-page">
+                <!-- 用户信息卡片 -->
+                <div class="profile-header">
+                    <div class="profile-bg">
+                        <div class="profile-bg-pattern"></div>
+                    </div>
+                    <div class="profile-avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="avatar">
+                        <button class="edit-avatar">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h2>张经理</h2>
+                        <p class="profile-role">
+                            <i class="fas fa-building"></i> 销售部 · 文档管理员
+                        </p>
+                    </div>
+                    <button class="edit-profile-btn">
+                        <i class="fas fa-edit"></i> 编辑资料
+                    </button>
+                </div>
+
+                <!-- 统计卡片 -->
+                <div class="stats-card profile-stats">
+                    <div class="stat-item" onclick="goToPage('library.html')">
+                        <div class="stat-value">83</div>
+                        <div class="stat-label">文档数</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item" onclick="goToPage('library.html')">
+                        <div class="stat-value">25</div>
+                        <div class="stat-label">分享次数</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-value">142</div>
+                        <div class="stat-label">下载次数</div>
+                    </div>
+                </div>
+
+                <!-- 功能设置 -->
+                <div class="settings-section">
+                    <h3 class="section-title">功能设置</h3>
+                    <div class="settings-list">
+                        <div class="setting-item" onclick="goToDownload()">
+                            <div class="setting-icon download">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">下载管理</span>
+                            </div>
+                            <div class="setting-extra">
+                                <span class="setting-badge">2个下载中</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setting-item" onclick="goToNotification()">
+                            <div class="setting-icon notification">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">消息通知</span>
+                            </div>
+                            <div class="setting-extra">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setting-item" onclick="goToSecurity()">
+                            <div class="setting-icon security">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">安全设置</span>
+                            </div>
+                            <div class="setting-extra">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-icon theme">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">深色模式</span>
+                            </div>
+                            <div class="setting-extra">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="darkModeToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item" onclick="clearCache()">
+                            <div class="setting-icon cache">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">缓存管理</span>
+                            </div>
+                            <div class="setting-extra">
+                                <span class="cache-size">128MB</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 其他设置 -->
+                <div class="settings-section">
+                    <h3 class="section-title">其他</h3>
+                    <div class="settings-list">
+                        <div class="setting-item" onclick="goToHelp()">
+                            <div class="setting-icon help">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">帮助与反馈</span>
+                            </div>
+                            <div class="setting-extra">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setting-item" onclick="goToAbout()">
+                            <div class="setting-icon about">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">关于eDOC</span>
+                            </div>
+                            <div class="setting-extra">
+                                <span class="version">v1.0.0</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setting-item logout" onclick="showLogoutConfirm()">
+                            <div class="setting-icon logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </div>
+                            <div class="setting-content">
+                                <span class="setting-name">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部占位 -->
+                <div class="bottom-placeholder"></div>
+            </div>
+
+            <!-- 底部导航 -->
+            <div class="bottom-nav">
+                <a href="home.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="library.html" class="nav-item">
+                    <i class="fas fa-folder"></i>
+                    <span>文档库</span>
+                </a>
+                <a href="task.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>任务</span>
+                    <span class="nav-badge">2</span>
+                </a>
+                <a href="profile.html" class="nav-item active">
+                    <i class="fas fa-user"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+    </div>
+
+    <!-- 下载管理弹窗 -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content download-modal">
+            <div class="modal-header">
+                <h3>下载管理</h3>
+                <button class="modal-close" onclick="closeDownloadModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="download-tab-bar">
+                    <button class="download-tab active">下载中 (2)</button>
+                    <button class="download-tab">已完成</button>
+                </div>
+                <div class="download-list">
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>COA证书合集_ORD20260112.zip</h4>
+                            <div class="download-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <span class="progress-text">8.5MB / 12MB</span>
+                            </div>
+                            <span class="download-time">剩余约30秒</span>
+                        </div>
+                        <div class="download-actions">
+                            <button class="action-btn pause">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="action-btn cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>报价单_Q20260115.pdf</h4>
+                            <div class="download-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="progress-text">0.3MB / 2.1MB</span>
+                            </div>
+                            <span class="download-time">等待中...</span>
+                        </div>
+                        <div class="download-actions">
+                            <button class="action-btn pause">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="action-btn cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-settings">
+                    <h4>下载设置</h4>
+                    <div class="setting-row">
+                        <span>仅WiFi下载</span>
+                        <label class="toggle-switch small">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <span>同时下载数量</span>
+                        <select class="small-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option selected>3</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 退出登录确认 -->
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-icon warning">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h3>确认退出登录？</h3>
+            <p>退出后需要重新登录才能使用</p>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeLogoutModal()">取消</button>
+                <button class="btn-danger" onclick="doLogout()">退出登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 清除缓存确认 -->
+    <div class="modal-overlay" id="cacheModal">
+        <div class="modal-content confirm-modal">
+            <div class="confirm-icon info">
+                <i class="fas fa-database"></i>
+            </div>
+            <h3>清除缓存？</h3>
+            <p>将清除128MB缓存数据，下次访问文档需要重新加载</p>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeCacheModal()">取消</button>
+                <button class="btn-primary" onclick="doClearCache()">确认清除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">操作成功</span>
+    </div>
+
+    <script src="../js/account-view.js"></script>
+    <script>
+        function goToDownload() {
+            document.getElementById('downloadModal').classList.add('show');
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').classList.remove('show');
+        }
+
+        function goToNotification() {
+            showToast('消息通知设置');
+        }
+
+        function goToSecurity() {
+            showToast('安全设置');
+        }
+
+        function goToHelp() {
+            showToast('帮助与反馈');
+        }
+
+        function goToAbout() {
+            showToast('eDOC v1.0.0');
+        }
+
+        function showLogoutConfirm() {
+            document.getElementById('logoutModal').classList.add('show');
+        }
+
+        function closeLogoutModal() {
+            document.getElementById('logoutModal').classList.remove('show');
+        }
+
+        function doLogout() {
+            closeLogoutModal();
+            showToast('已退出登录');
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 1500);
+        }
+
+        function clearCache() {
+            document.getElementById('cacheModal').classList.add('show');
+        }
+
+        function closeCacheModal() {
+            document.getElementById('cacheModal').classList.remove('show');
+        }
+
+        function doClearCache() {
+            closeCacheModal();
+            showToast('缓存已清除');
+            document.querySelector('.cache-size').textContent = '0MB';
+        }
+
+        // 深色模式切换
+        document.getElementById('darkModeToggle').addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            showToast(this.checked ? '已开启深色模式' : '已关闭深色模式');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eDOC - 首页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/account-view.css">
+</head>
+<body class="account-body">
+    <div class="bg-gradient"></div>
+
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span class="time">09:41</span>
+                <div class="status-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+
+            <div class="page-content home-page">
+                <!-- 顶部渐变背景 -->
+                <div class="home-gradient-bg"></div>
+
+                <!-- 顶部Header -->
+                <div class="home-header">
+                    <div class="header-left">
+                        <div class="logo-small">
+                            <i class="fas fa-file-shield"></i>
+                            <span>eDOC</span>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <button class="header-btn notification" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">2</span>
+                        </button>
+                        <div class="user-avatar" onclick="goToProfile()">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="avatar">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 欢迎语 -->
+                <div class="welcome-section">
+                    <h1>早上好，张经理</h1>
+                    <p>今天有 <span class="highlight">2</span> 项待办事项需要处理</p>
+                </div>
+
+                <!-- 搜索框 -->
+                <div class="search-section">
+                    <div class="search-box" onclick="goToSearch()">
+                        <i class="fas fa-search"></i>
+                        <span>搜索订单号/产品代码/关键词...</span>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-btn scan" onclick="goToScan()">
+                            <i class="fas fa-qrcode"></i>
+                            <span>扫码</span>
+                        </button>
+                        <button class="quick-btn voice" onclick="startVoice()">
+                            <i class="fas fa-microphone"></i>
+                            <span>语音</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 常用功能 -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3>常用功能</h3>
+                        <a href="javascript:void(0)" class="more-link">查看更多 <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="function-grid">
+                        <div class="function-item" onclick="goToPage('upload.html')">
+                            <div class="function-icon upload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <span>上传</span>
+                        </div>
+                        <div class="function-item" onclick="goToSearch()">
+                            <div class="function-icon search">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <span>检索</span>
+                        </div>
+                        <div class="function-item" onclick="goToPage('library.html')">
+                            <div class="function-icon stats">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <span>统计</span>
+                        </div>
+                        <div class="function-item" onclick="goToPage('library.html')">
+                            <div class="function-icon history">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <span>历史</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近访问 -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3>最近访问</h3>
+                        <a href="library.html" class="more-link">查看全部 <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="recent-list">
+                        <div class="recent-item" onclick="previewDoc('coa')">
+                            <div class="recent-icon pdf">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="recent-info">
+                                <h4>COA证书_BATCH001.pdf</h4>
+                                <p>今天 10:30 · ECOA系统</p>
+                            </div>
+                            <div class="recent-badge from-share">来自分享</div>
+                        </div>
+                        <div class="recent-item" onclick="previewDoc('receipt')">
+                            <div class="recent-icon pdf">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="recent-info">
+                                <h4>签收单_ORD20260112.pdf</h4>
+                                <p>昨天 15:20 · DRM系统</p>
+                            </div>
+                        </div>
+                        <div class="recent-item" onclick="previewDoc('invoice')">
+                            <div class="recent-icon pdf">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="recent-info">
+                                <h4>发票_INV20260112.pdf</h4>
+                                <p>昨天 14:15 · DRM系统</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 待办事项 -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3>待办事项</h3>
+                        <span class="todo-count">2 项</span>
+                    </div>
+                    <div class="todo-list">
+                        <div class="todo-item urgent" onclick="goToPage('task.html')">
+                            <div class="todo-indicator"></div>
+                            <div class="todo-content">
+                                <h4>元数据提取任务待确认</h4>
+                                <p>3个文档待处理 · 2小时前</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="todo-item warning" onclick="goToPage('task.html')">
+                            <div class="todo-indicator"></div>
+                            <div class="todo-content">
+                                <h4>分享链接即将过期</h4>
+                                <p>2个分享明天到期 · 提醒</p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据概览 -->
+                <div class="section-card stats-card">
+                    <div class="section-header">
+                        <h3>本月数据</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">83</div>
+                            <div class="stat-label">文档总数</div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i> 12%
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">25</div>
+                            <div class="stat-label">分享次数</div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i> 8%
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">142</div>
+                            <div class="stat-label">访问次数</div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i> 23%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部占位 -->
+                <div class="bottom-placeholder"></div>
+            </div>
+
+            <!-- 底部导航 -->
+            <div class="bottom-nav">
+                <a href="home.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="library.html" class="nav-item">
+                    <i class="fas fa-folder"></i>
+                    <span>文档库</span>
+                </a>
+                <a href="task.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>任务</span>
+                    <span class="nav-badge">2</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+    </div>
+
+    <!-- 通知面板 -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="panel-header">
+            <h3>消息通知</h3>
+            <button class="panel-close" onclick="closeNotification()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="panel-body">
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-file-import"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>文档同步完成</h4>
+                    <p>DRM系统同步完成，新增12个文档</p>
+                    <span class="notification-time">10分钟前</span>
+                </div>
+            </div>
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>分享被访问</h4>
+                    <p>您分享的"订单ORD20260112文档"被访问</p>
+                    <span class="notification-time">30分钟前</span>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>分享即将过期</h4>
+                    <p>您的2个分享将在明天过期</p>
+                    <span class="notification-time">2小时前</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 语音识别弹窗 -->
+    <div class="modal-overlay" id="voiceModal">
+        <div class="modal-content voice-modal">
+            <button class="modal-close" onclick="closeVoiceModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="voice-animation">
+                <div class="voice-circle"></div>
+                <div class="voice-circle"></div>
+                <div class="voice-circle"></div>
+                <i class="fas fa-microphone"></i>
+            </div>
+            <h3>正在聆听...</h3>
+            <p>请说出您要查询的内容</p>
+            <div class="voice-hint">
+                <span>试试说：</span>
+                <em>"查询订单20260112的COA证书"</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">操作成功</span>
+    </div>
+
+    <script src="../js/account-view.js"></script>
+</body>
+</html>

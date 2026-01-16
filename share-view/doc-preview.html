@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eDOC - 文档预览</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/share-view.css">
+</head>
+<body class="share-body preview-body">
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="status-bar dark">
+                <span class="time">09:43</span>
+                <div class="status-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+
+            <div class="page-content preview-page">
+                <!-- 顶部导航 -->
+                <div class="nav-header preview-nav">
+                    <a href="doc-list.html" class="nav-back">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <span class="nav-title">COA证书_BATCH001.pdf</span>
+                    <button class="nav-more" id="previewMoreBtn">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+
+                <!-- 文档预览区域 -->
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-content" id="previewContent">
+                        <!-- 模拟PDF文档内容 -->
+                        <div class="pdf-page" data-page="1">
+                            <div class="pdf-header">
+                                <div class="company-logo">
+                                    <div class="logo-placeholder">LOGO</div>
+                                </div>
+                                <div class="doc-title-area">
+                                    <h1>Certificate of Analysis</h1>
+                                    <h2>产品质量分析证书 (COA)</h2>
+                                </div>
+                                <div class="cert-number">
+                                    <span>证书编号</span>
+                                    <strong>COA-2026-001158</strong>
+                                </div>
+                            </div>
+
+                            <div class="pdf-section">
+                                <div class="section-title">
+                                    <i class="fas fa-cube"></i>
+                                    <span>产品信息 Product Information</span>
+                                </div>
+                                <table class="info-table">
+                                    <tr>
+                                        <td class="label">产品名称</td>
+                                        <td class="value">高纯度化学品A</td>
+                                        <td class="label">产品代码</td>
+                                        <td class="value highlight-text">PROD001</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">批次号</td>
+                                        <td class="value highlight-text">BATCH001</td>
+                                        <td class="label">生产日期</td>
+                                        <td class="value">2026-01-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">有效期至</td>
+                                        <td class="value">2028-01-10</td>
+                                        <td class="label">规格</td>
+                                        <td class="value">500g/瓶</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="pdf-section">
+                                <div class="section-title">
+                                    <i class="fas fa-vial"></i>
+                                    <span>检验结果 Test Results</span>
+                                </div>
+                                <table class="result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>检验项目</th>
+                                            <th>标准要求</th>
+                                            <th>检验结果</th>
+                                            <th>结论</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>外观</td>
+                                            <td>白色结晶粉末</td>
+                                            <td>白色结晶粉末</td>
+                                            <td class="pass"><i class="fas fa-check-circle"></i> 合格</td>
+                                        </tr>
+                                        <tr>
+                                            <td>纯度</td>
+                                            <td>≥99.5%</td>
+                                            <td>99.8%</td>
+                                            <td class="pass"><i class="fas fa-check-circle"></i> 合格</td>
+                                        </tr>
+                                        <tr>
+                                            <td>水分</td>
+                                            <td>≤0.5%</td>
+                                            <td>0.3%</td>
+                                            <td class="pass"><i class="fas fa-check-circle"></i> 合格</td>
+                                        </tr>
+                                        <tr>
+                                            <td>重金属</td>
+                                            <td>≤10ppm</td>
+                                            <td>5ppm</td>
+                                            <td class="pass"><i class="fas fa-check-circle"></i> 合格</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pH值</td>
+                                            <td>6.5-7.5</td>
+                                            <td>7.0</td>
+                                            <td class="pass"><i class="fas fa-check-circle"></i> 合格</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pdf-section conclusion">
+                                <div class="conclusion-box">
+                                    <i class="fas fa-award"></i>
+                                    <div class="conclusion-text">
+                                        <strong>检验结论：合格</strong>
+                                        <span>本批次产品各项指标均符合质量标准要求</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pdf-footer">
+                                <div class="sign-area">
+                                    <div class="sign-item">
+                                        <span class="sign-label">检验员</span>
+                                        <div class="sign-line">王芳</div>
+                                    </div>
+                                    <div class="sign-item">
+                                        <span class="sign-label">审核员</span>
+                                        <div class="sign-line">李明</div>
+                                    </div>
+                                    <div class="sign-item">
+                                        <span class="sign-label">批准日期</span>
+                                        <div class="sign-line">2026-01-11</div>
+                                    </div>
+                                </div>
+                                <div class="stamp-area">
+                                    <div class="stamp">
+                                        <span>质量检验专用章</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 搜索高亮工具栏 -->
+                <div class="search-toolbar" id="searchToolbar">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="搜索文档内容..." id="contentSearch">
+                        <button class="search-close" onclick="closeSearch()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-nav">
+                        <span class="search-result">找到 <span id="matchCount">0</span> 处</span>
+                        <button class="nav-btn" onclick="prevMatch()">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
+                        <button class="nav-btn" onclick="nextMatch()">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 页码导航 -->
+                <div class="page-navigation">
+                    <button class="page-btn prev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="page-info">第 <span id="currentPage">1</span> 页 / 共 <span id="totalPages">1</span> 页</span>
+                    <button class="page-btn next" disabled>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- 底部操作栏 -->
+                <div class="preview-action-bar">
+                    <button class="preview-action search-btn" onclick="toggleSearch()">
+                        <i class="fas fa-search"></i>
+                        <span>搜索</span>
+                    </button>
+                    <button class="preview-action" onclick="downloadDoc()">
+                        <i class="fas fa-download"></i>
+                        <span>下载</span>
+                    </button>
+                    <button class="preview-action" onclick="shareDoc()">
+                        <i class="fas fa-share-alt"></i>
+                        <span>分享</span>
+                    </button>
+                    <button class="preview-action" onclick="favoriteDoc()">
+                        <i class="far fa-star"></i>
+                        <span>收藏</span>
+                    </button>
+                    <button class="preview-action" onclick="showDocInfo()">
+                        <i class="fas fa-info-circle"></i>
+                        <span>详情</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+    </div>
+
+    <!-- 文档详情弹窗 -->
+    <div class="modal-overlay" id="docInfoModal">
+        <div class="modal-content doc-info-modal">
+            <div class="modal-header">
+                <h3>文档详情</h3>
+                <button class="modal-close" onclick="closeDocInfo()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="doc-info-section">
+                    <div class="doc-info-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-info-main">
+                        <h4>COA证书_BATCH001.pdf</h4>
+                        <p>PDF文档 · 512KB</p>
+                        <p class="update-time">更新时间：2026-01-11 10:30</p>
+                    </div>
+                </div>
+
+                <div class="info-card-group">
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <i class="fas fa-shopping-cart"></i>
+                            订单信息
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">订单号</span>
+                            <span class="value copyable" onclick="copyText('ORD20260112')">ORD20260112 <i class="fas fa-copy"></i></span>
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">下单日期</span>
+                            <span class="value">2026-01-08</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <i class="fas fa-cube"></i>
+                            产品信息
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">产品代码</span>
+                            <span class="value copyable" onclick="copyText('PROD001')">PROD001 <i class="fas fa-copy"></i></span>
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">产品名称</span>
+                            <span class="value">产品A</span>
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">批次号</span>
+                            <span class="value copyable" onclick="copyText('BATCH001')">BATCH001 <i class="fas fa-copy"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <i class="fas fa-building"></i>
+                            客户信息
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">客户代码</span>
+                            <span class="value">CUST001</span>
+                        </div>
+                        <div class="info-card-row">
+                            <span class="label">客户名称</span>
+                            <span class="value">XX化工有限公司</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="source-info">
+                    <span><i class="fas fa-server"></i> 来源系统：ECOA系统</span>
+                    <span><i class="fas fa-file-alt"></i> 文档类型：质检报告COA</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeDocInfo()">关闭</button>
+                <button class="btn-primary" onclick="previewFromInfo()">
+                    <i class="fas fa-eye"></i> 预览
+                </button>
+                <button class="btn-primary" onclick="downloadFromInfo()">
+                    <i class="fas fa-download"></i> 下载
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享弹窗 -->
+    <div class="modal-overlay" id="shareModal">
+        <div class="modal-content share-modal">
+            <div class="modal-header">
+                <h3>分享文档</h3>
+                <button class="modal-close" onclick="closeShareModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <button class="share-option" onclick="shareToWechat()">
+                        <div class="share-icon wechat">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                        <span>微信好友</span>
+                    </button>
+                    <button class="share-option" onclick="shareToMoments()">
+                        <div class="share-icon moments">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <span>朋友圈</span>
+                    </button>
+                    <button class="share-option" onclick="copyLink()">
+                        <div class="share-icon link">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <span>复制链接</span>
+                    </button>
+                    <button class="share-option" onclick="generateQR()">
+                        <div class="share-icon qr">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <span>二维码</span>
+                    </button>
+                </div>
+                <div class="share-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <span>分享将保持原链接权限设置，有效期：2026-01-22</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">操作成功</span>
+    </div>
+
+    <!-- 登录引导弹窗 -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content login-modal">
+            <button class="modal-close" onclick="closeLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="login-modal-icon">
+                <i class="far fa-star"></i>
+            </div>
+            <h3>收藏文档</h3>
+            <p>登录后即可收藏文档<br>方便下次快速查找</p>
+            <button class="btn-primary" onclick="goToLogin()">
+                <i class="fas fa-sign-in-alt"></i>
+                立即登录
+            </button>
+            <button class="btn-secondary" onclick="goToRegister()">
+                <i class="fas fa-user-plus"></i>
+                注册新账号
+            </button>
+            <a href="javascript:void(0)" class="skip-link" onclick="closeLoginModal()">暂不登录</a>
+        </div>
+    </div>
+
+    <script src="../js/share-view.js"></script>
+    <script>
+        // 预览页面特定脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            initPreview();
+        });
+    </script>
+</body>
+</html>
